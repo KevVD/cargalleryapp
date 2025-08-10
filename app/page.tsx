@@ -14,16 +14,22 @@ export default function Home() {
   const [contactCarId, setContactCarId] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
   
-  useEffect(() => {
-    fetch("https://cbsofttechnology.com.ng/api/get_cars.php")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          setCarData(data.data)
-        }
-      })
-      .catch((err) => console.error("Error fetching cars:", err))
-  }, [])
+   useEffect(() => {
+  fetch("https://cbsofttechnology.com.ng/api/get_cars.php")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Fetched cars:", data); // Log full response
+      if (data.status === "success" && Array.isArray(data.data)) {
+        const validCars = data.data.filter(isValidCar);
+        console.log("Valid cars:", validCars); // Log filtered cars
+        setCarData(validCars);
+      } else {
+        console.warn("Unexpected API response:", data);
+      }
+    })
+    .catch((err) => console.error("Error fetching cars:", err));
+}, []);
+
   
   
 
