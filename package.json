@@ -1,7 +1,7 @@
 {
   "name": "car-gallery-app",
   "version": "1.0.0",
-  "description": "A responsive React-based car sales landing page built with Next.js and TailwindCSS. This application showcases a professional car dealership interface with advanced filtering, modal interactions, and responsive design.",
+  "description": "A responsive React-based car sales landing page built with Next.js and TailwindCSS.",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -9,10 +9,10 @@
   "scripts": {
     "dev": "next dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-     "vercel-build": "next build"
+    "build": "next build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["car", "gallery", "nextjs", "react", "tailwind"],
+  "author": "Kelvin",
   "license": "ISC",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
