@@ -25,11 +25,15 @@ export default function CarCard({ car, onClick, onRequestViewing }: CarCardProps
     >
       {/* Main Image */}
       <div className="relative h-48 w-full">
-        <Image
-          src={car.images.front || "/placeholder.svg"}
-          alt={`${car.brand} ${car.model} - Front view`}
-          fill
-          className="object-cover"
+      {console.log("Main image URL:", car.images.front)}
+         <Image
+    src={car.images.front}
+    alt={`${car.brand} ${car.model} - Front view`}
+    fill
+    className="object-cover"
+    onError={(e) => {
+      e.currentTarget.src = "/placeholder.svg";
+    }}
         />
       </div>
 
@@ -52,6 +56,8 @@ export default function CarCard({ car, onClick, onRequestViewing }: CarCardProps
         {/* Thumbnail Images */}
         <div className="grid grid-cols-4 gap-1 mb-4">
           {Object.entries(car.images).map(([view, src]) => (
+             console.log(`${view} image URL:`, src);
+             return (
             <div key={view} className="relative h-12 w-full">
               <Image
                 src={src || "/placeholder.svg"}
@@ -62,6 +68,9 @@ export default function CarCard({ car, onClick, onRequestViewing }: CarCardProps
             </div>
           ))}
         </div>
+<p className="text-sm text-gray-700 mb-4 line-clamp-3">
+  {car.description}
+</p>
 
         <button
           onClick={handleRequestViewing}

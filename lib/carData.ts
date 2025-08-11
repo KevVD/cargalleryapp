@@ -1,5 +1,5 @@
 export interface Car {
-  id: string;
+  id: number;
   brand: string;
   model: string;
   price: number;
@@ -11,6 +11,7 @@ export interface Car {
     right: string;
   };
   description: string;
+}
 }
 
 export const carData: Car[] = [

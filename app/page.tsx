@@ -14,34 +14,20 @@ export default function Home() {
   const [contactCarId, setContactCarId] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
   
-  useEffect(() => {
+useEffect(() => {
   fetch("https://cbsofttechnology.com.ng/api/get_cars.php")
     .then((res) => res.json())
     .then((data) => {
       console.log("Fetched cars:", data);
 
       if (data.status === "success" && Array.isArray(data.data)) {
-        const transformedCars = data.data.map((car: any) => ({
-          ...car,
-          images: {
-            front: car.image_front,
-            back: car.image_back,
-            left: car.image_left,
-            right: car.image_right,
-          },
-        }));
-
-        setCarData(transformedCars);
+        setCarData(data.data); // ✅ Use data directly
       } else {
         console.warn("Unexpected API response:", data);
       }
     })
     .catch((err) => console.error("Error fetching cars:", err));
 }, []);
-
-
-  
-  
 
   const filteredCars = useMemo(() => {
     if (!searchTerm) return carData
