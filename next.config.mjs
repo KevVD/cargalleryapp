@@ -8,8 +8,8 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['cbsofttechnology.com.ng'], // ✅ Add this line
-   }, 
+    domains: ['cbsofttechnology.com.ng'],
+  }
 };
 
 export default nextConfig;
