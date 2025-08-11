@@ -9,8 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
     domains: ['cbsofttechnology.com.ng'], // ✅ Add this line
-  },
-  },
-}
+   }, 
+};
 
-export default nextConfig
+export default nextConfig;
